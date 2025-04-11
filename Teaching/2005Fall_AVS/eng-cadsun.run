@@ -1,0 +1,36 @@
+echo "decompresing the profile files..."
+gunzip profile_files.tar.gz
+echo "Opening the archive..."
+tar -xvf profile_files.tar
+sleep 2
+echo "Changing directory to profile_files ..."
+cd profile_files
+sleep 2
+echo "Copying files to the home directory"
+cp .bash_profile ..
+cp .bash_alias ..
+cp cds.run ..
+sleep 2
+echo "Changing back to the home directory"
+cd ..
+sleep 2
+echo "Changing permissions for the scrits"
+chmod u+x .bash_profile
+sleep 1
+chmod u+x .bash_alias 
+sleep 1
+chmod u+x cds.run
+sleep 1
+echo "Running profile file..."
+./.bash_profile
+sleep 2
+echo "Loading aliases ..."
+./.bash_alias
+sleep 2
+echo "Running cds environment setup file"
+source cds.run
+sleep 2
+echo "Launching Cadence ICFB tool"
+sleep 2
+icfb &
+
